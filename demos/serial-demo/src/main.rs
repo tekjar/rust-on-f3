@@ -51,10 +51,14 @@ fn loopback(_t: &mut Threshold, r: USART1_EXTI25::Resources) {
 
     let byte = serial.read().unwrap();
 
-    for b in b"The quick brown fox jumps over the lazy dog\n".iter() {
+    for b in b"The quick brown fox jumps over the lazy dog\r\n".iter() {
         while !serial.0.isr.read().txe().bit_is_set() {}
         serial.write(*b).unwrap();
     }
     
     serial.write(byte).unwrap();
+    while !serial.0.isr.read().txe().bit_is_set() {}
+    serial.write(b'\r').unwrap();
+    while !serial.0.isr.read().txe().bit_is_set() {}
+    serial.write(b'\n').unwrap();
 }
