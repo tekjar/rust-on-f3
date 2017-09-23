@@ -36,7 +36,6 @@ app! {
 // INITIALIZATION PHASE
 fn init(p: init::Peripherals, _r: init::Resources) {
     led::init(p.GPIOE, p.RCC);
-
     p.SYST.set_clock_source(SystClkSource::Core);
     p.SYST.set_reload(8_000_000 / FREQUENCY);
     p.SYST.enable_interrupt();
