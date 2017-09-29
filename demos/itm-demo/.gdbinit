@@ -1,6 +1,6 @@
 target remote :3333
 
-monitor arm semihosting enable
+# monitor arm semihosting enable
 
 # # send captured ITM to the file itm.fifo
 # # (the microcontroller SWO pin must be connected to the programmer SWO pin)
@@ -12,7 +12,7 @@ monitor tpiu config internal itm.fifo uart off 8000000
 # monitor tpiu config external uart off 8000000 2000000
 
 # # enable ITM port 0
-monitor itm port 0 on
+# monitor itm port 0 on
 
 load
 step

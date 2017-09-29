@@ -11,7 +11,7 @@
 # will likely look very different (and much more reasonable)
 
 [package]
-name = "led-demo"
+name = "itm-demo"
 version = "0.1.0"
 authors = ["Jorge Aparicio <jorge@japaric.io>"]
 description = "A template for building applications for ARM Cortex-M microcontrollers"

@@ -6,6 +6,7 @@
 
 extern crate cast;
 extern crate f3;
+#[macro_use(iprint, iprintln)]
 extern crate cortex_m;
 extern crate cortex_m_rtfm as rtfm;
 
@@ -28,7 +29,7 @@ app! {
     tasks: {
         SYS_TICK: {
             path: roulette,
-            resources: [STATE],
+            resources: [STATE, ITM],
         },
     },
 }
@@ -55,6 +56,7 @@ fn roulette(_t: &mut Threshold, r: SYS_TICK::Resources) {
     let curr = **r.STATE;
     let next = (curr + 1) % u8(LEDS.len()).unwrap();
 
+    iprintln!(&r.ITM.stim[0], "Hello World!! LED = {}", next);
     LEDS[usize(curr)].off();
     LEDS[usize(next)].on();
 
