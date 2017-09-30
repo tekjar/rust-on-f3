@@ -25,6 +25,7 @@ debug = true
 
 [dependencies]
 cortex-m-rtfm = "0.2.0"
+nb = {git = "https://github.com/japaric/nb"}
 f3 = {path = "../../f3"}
 
 [dependencies.cast]
